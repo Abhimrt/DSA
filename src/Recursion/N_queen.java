@@ -30,22 +30,24 @@ public class N_queen {
     static boolean safe(int board[][], int row, int col)
     {
         int i, j;
-
         /* Check this upside */
-        for (i = 0; i < row; i++)
-            if (board[i][col] == 1)
+        for (i = 0; i < row; i++) {
+            if (board[i][col] == 1) {
                 return false;
-
+            }
+        }
         /* Check upper diagonal on left side */
-        for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-            if (board[i][j] == 1)
+        for (i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 1) {
                 return false;
-
+            }
+        }
         /* Check upper diagonal on right side */
-        for (i = row, j = col; j < board.length && i >= 0; i--, j++)
-            if (board[i][j] == 1)
+        for (i = row, j = col; j < board.length && i >= 0; i--, j++) {
+            if (board[i][j] == 1) {
                 return false;
-
+            }
+        }
         return true;
     }
 }
