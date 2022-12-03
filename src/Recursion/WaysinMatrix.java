@@ -1,5 +1,5 @@
 package Recursion;
-
+//in this algo we found the no of ways to go to the bottom right corner of the matrix
 public class WaysinMatrix {
     public static void main(String[] args) {
         System.out.println(ways(3,3));

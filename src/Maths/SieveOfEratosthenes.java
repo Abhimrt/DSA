@@ -1,7 +1,7 @@
 package Maths;
 
 import java.util.Arrays;
-
+//this algo give the prime no. between the range
 public class SieveOfEratosthenes {
     public static void main(String[] args) {
         int n =20;
