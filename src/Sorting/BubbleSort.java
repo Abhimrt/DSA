@@ -2,6 +2,7 @@ package Sorting;
 
 import Basic.AO;
 
+//one by one iterate and swap if the number is large
 public class BubbleSort {
     public static void main(String[] args) {
         int[] arr = AO.ins();
