@@ -1,13 +1,12 @@
 package Basic;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class AO {
 //    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12
     // retrun array after taking the value
+    static Scanner s = new Scanner(System.in);
     public static int[] ins(){
-        Scanner s = new Scanner(System.in);
         System.out.print("Enter the length of the array:- ");
         int n = s.nextInt();
         int[] arr = new int[n];
@@ -27,5 +26,16 @@ public class AO {
             arr[j] = arr[i]^arr[j];
             arr[i] = arr[i]^arr[j];
         }
+    }
+
+    public static List<Integer> list(){
+        System.out.print("Enter the length of the List:- ");
+        List<Integer> temp = new ArrayList<Integer>();
+        int n = s.nextInt();
+        for(int i=0;i<n;i++){
+            System.out.print("Enter "+(i+1)+" element: - ");
+            temp.add(s.nextInt());
+        }
+        return temp;
     }
 }

@@ -7,7 +7,7 @@ import Basic.AO;
 //space complexity  O(n)
 public class Quick {
     public static void main(String[] args) {
-        int[] arr = new int[]{4,5,7,5,97,5,7,9};
+        int[] arr = AO.ins();
         quickSort(arr , 0,arr.length-1);
         AO.show(arr);
     }
