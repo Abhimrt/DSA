@@ -1,5 +1,7 @@
 package Binary;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -30,6 +32,10 @@ public class BinaryTree {
         root.left = createTree();
 
 //      Right side of the tree
+        if (null == root.left) {
+            root.right = null;
+            return root;
+        }
         System.out.println("Enter right side of "+data);
         root.right = createTree();
 
@@ -57,6 +63,35 @@ public class BinaryTree {
         System.out.print(root.data+" ");
     }
 
+    static int heightTree(Node root){
+        if(root == null) return 0;
+        return Math.max(heightTree(root.left),heightTree(root.right))+1;
+    }
+
+    static int sizeTree(Node root){
+        if(root == null) return 0;
+        return (sizeTree(root.right) + sizeTree(root.left)+1);
+    }
+
+    static int maximumTree(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+        return Math.max(root.data, Math.max(maximumTree(root.right) , maximumTree(root.left)));
+    }
+
+    static void minimumTree(Node root){
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while(!q.isEmpty()){
+            Node cur = q.poll();
+            System.out.print(cur.data+" ");
+            if(!(null == cur.left)){
+                q.add(cur.left);
+            }
+            if(!(null == cur.right)){
+                q.add(cur.right);
+            }
+        }
+    }
 }
 class Node{
     Node left,right;
