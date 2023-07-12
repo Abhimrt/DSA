@@ -56,6 +56,25 @@ public class Singly {
         size++;
     }// insertion last over
 
+    //insert element with the help of recursion
+    public void InsertRec(int val, int index){
+        if(index > size || index < 1){
+            System.out.println("Linked List OutOfBound");
+            return;
+        }
+        InsertRec(val, index,head);
+        size++;
+    }
+    private Node InsertRec(int val,int index,Node node){
+        if(index == 0){
+            Node temp = new Node(val,node);
+            return temp;
+        }
+        node.next = InsertRec(val,index-1,node.next);
+        return node;
+    }
+
+
     // Display the Linked List
     public void Display(){
         if(head == null){
@@ -70,7 +89,24 @@ public class Singly {
                 System.out.print(" -> ");
         }
         System.out.println();
-    }// display over
+    }
+
+    public void Display(Node head){
+        if(head == null){
+            System.out.println("Linked List is Empty");
+            return;
+        }
+        Node node  = head;
+        while(node != null){
+            System.out.print(node.value);
+            node = node.next;
+            if(node != null)
+                System.out.print(" -> ");
+        }
+        System.out.println();
+    }
+
+    // display over
 
     //Search of keys
     public void Search(int val){
@@ -89,6 +125,61 @@ public class Singly {
         System.out.println(val+" Present in the Linked List");
     }//Search 'key' over
 
+    public Node mergeSort(Node head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node middle = middle(head);
+        Node l1 = mergeSort(head);
+        Node l2 = mergeSort(middle);
+        return merge(l1,l2);
+
+    }
+
+    public Node merge(Node first,Node second){
+        Node ret = new Node(0);
+        Node ans = ret;
+        // System.out.println();
+        // System.out.println("first -> "+first.val+" second-> "+second.val);
+        // System.out.println("merge -> ");
+        while(first!=null && second != null){
+            if(first.value <= second.value){
+                ans.next = first;
+                first = first.next;
+            }else{
+                ans.next = second;
+                second = second.next;
+            }
+            // System.out.print(ans.val+", ");
+            ans = ans.next;
+        }
+
+        if (first != null)
+            ans.next = first;
+
+        if (second != null)
+            ans.next = second;
+
+        // System.out.print(ans.val+",. ");
+
+        return ret.next;
+    }
+
+    // middle of the linked list
+    public Node middle(Node head){
+        Node slow = head;
+        Node fast = head;
+        Node prev = slow;
+        while(fast != null && fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        prev.next = null;
+        return slow;
+    }
+
+
     //Deletion of the node at beginning
     public void DeleteB(){
         if(head == null){
@@ -97,6 +188,7 @@ public class Singly {
         }
         System.out.println("Deleted Element from beginning: "+head.value);
         head = head.next;
+        size--;
     }//Delete beginning over
 
     //Deletion of the node at end
@@ -106,6 +198,7 @@ public class Singly {
             return;
         }
         System.out.println("Deleted Element from end: "+tail.value);
+        size--;
         if(head == tail){
             head = null;
             tail = null;
@@ -138,6 +231,7 @@ public class Singly {
             }
         }
         System.out.println(val+" Deleted");
+        size--;
         node.next = node.next.next;
     }//Delete 'key' over
 
@@ -149,9 +243,8 @@ public class Singly {
         ll.InsertELast(12);
         ll.InsertELast(1);
         ll.Display();
-//        ll.DeleteE();
-//        ll.Display();
-        ll.DeleteKey(12);
+        ll.head = ll.mergeSort(ll.head);
+        System.out.println(ll.size);
         ll.Display();
 
     }
