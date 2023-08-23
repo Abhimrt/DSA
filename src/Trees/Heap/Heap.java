@@ -1,4 +1,4 @@
-package Heap;
+package Trees.Heap;
 /*
     Node = i
     parent(i) = Math.floor(i/2)
