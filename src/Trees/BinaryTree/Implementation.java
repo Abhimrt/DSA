@@ -1,8 +1,6 @@
-package Trees.BInaryTree;
+package Trees.BinaryTree;
 
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
